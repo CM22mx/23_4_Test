@@ -11,6 +11,10 @@ datagroup: 23_4_tests_default_datagroup {
 persist_with: 23_4_tests_default_datagroup
 
 #explore: div_stylebackgroundimage_urldatatexthtmlimgsrc1 {}
+explore: newtest {
+  #view_name: newtest
+  extends: [orders]
+}
 
 explore: imgsrc1onerroralert2 {}
 
@@ -61,6 +65,7 @@ explore: fakeorders {
 explore: fatal_error_user_derived_base {}
 
 explore: flights {
+
   view_name: flights
 }
 
@@ -107,7 +112,8 @@ explore: inventory_items {
 }
 
 explore: orders {
-  extends: [flights]
+  view_name: orders
+  #extends: [newtest]
   #join: users {
    # type: left_outer
    # sql_on: ${orders.user_id} = ${users.id} ;;
