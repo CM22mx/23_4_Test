@@ -21,7 +21,30 @@ view: orders {
     ]
     sql: ${TABLE}.created_at ;;
   }
+  parameter: set {
+    type: unquoted
+    allowed_value: {
+      label: "1"
+      value: "one"
+    }
+    allowed_value: {
+      label: "2"
+      value: "two"
+    }
+    allowed_value: {
+      label: "3"
+      value: "three"
+    }
+  }
 
+  dimension: yt {
+    type: string
+    sql: {% if set._parameter_value== 'one' or 'two' %}
+    'true'
+    {%else%}
+    'false'
+    {%endif%};;
+  }
   dimension: status {
     type: string
     sql: ${TABLE}.status ;;
